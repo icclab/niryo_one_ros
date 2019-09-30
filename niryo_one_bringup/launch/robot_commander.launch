@@ -23,10 +23,12 @@
         <param name="goal_joint_tolerance"       type="double" value="0.0001" />
         <param name="goal_position_tolerance"    type="double" value="0.0001" />
         <param name="goal_orientation_tolerance" type="double" value="0.001" />
-        <param name="positions_dir" type="string"  value="/home/niryo/niryo_one_positions" unless="$(arg simulation_mode)"/>
-        <param name="positions_dir" type="string"  value="~/niryo_one_positions"           if="$(arg simulation_mode)"/>
-        <param name="trajectories_dir" type="string"  value="/home/niryo/niryo_one_trajectories" unless="$(arg simulation_mode)"/>
-        <param name="trajectories_dir" type="string"  value="~/niryo_one_trajectories"           if="$(arg simulation_mode)"/>
+        <!-- Don't need hardcoded path for remote move group launch -->
+        <!-- If need to rever add if="$(arg simulation_mode)" to the non-commented lines -->
+        <!-- <param name="positions_dir" type="string"  value="/home/niryo/niryo_one_positions" unless="$(arg simulation_mode)"/> -->
+        <param name="positions_dir" type="string"  value="~/niryo_one_positions" />
+        <!-- <param name="trajectories_dir" type="string"  value="/home/niryo/niryo_one_trajectories" unless="$(arg simulation_mode)"/> -->
+        <param name="trajectories_dir" type="string"  value="~/niryo_one_trajectories" />
 
     </node>
 </launch>
