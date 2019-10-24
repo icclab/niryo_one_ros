@@ -37,7 +37,7 @@ if __name__ == '__main__':
         # Start the ROS node
         rospy.init_node('gripper_command')
         # Set the value to the gripper
-        result = gripper_client(gripper_value)
+        result = gripper_client_2(gripper_value)
         
     except rospy.ROSInterruptException:
         print ("Program interrupted before completion")
