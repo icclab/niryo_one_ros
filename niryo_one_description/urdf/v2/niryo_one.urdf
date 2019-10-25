@@ -125,9 +125,9 @@
     </collision>
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="2"/>
+      <mass value="5"/>
       <!--to change-->
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+      <inertia ixx="108.33" ixy="0.0" ixz="0.0" iyy="163.33" iyz="0.0" izz="108.33"/>
     </inertial>
   </link>
   <link name="shoulder_link">
