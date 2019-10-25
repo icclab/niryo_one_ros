@@ -585,9 +585,9 @@
   <transmission name="gripper_gear_left_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="gripper_gear_left_joint">
-      <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>-->
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <!--<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>-->
     </joint>
     <actuator name="gripper_gear_left_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -596,9 +596,9 @@
   <transmission name="gripper_gear_right_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="gripper_gear_right_joint">
-      <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <!--<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>-->
     </joint>
     <actuator name="gripper_gear_right_motor">
       <mechanicalReduction>1</mechanicalReduction>
