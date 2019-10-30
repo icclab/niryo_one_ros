@@ -251,7 +251,7 @@
       <joint name="${prefix}rod_left_joint" type="revolute">
          <parent link="${prefix}base_link"/>
          <child link="${prefix}rod_left_link"/>
-            <origin xyz="0.014 0.0 0.027" rpy="0 0 0" />
+         <origin xyz="0.014 0.0 0.027" rpy="0 0.261799 0" />  <!-- 0.261799 is 15 degrees -->
         <axis xyz="0 -1 0" />
  	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
 	<mimic joint="${prefix}gear_left_joint" multiplier="1" offset="0"/>
@@ -295,7 +295,7 @@
       <joint name="${prefix}rod_right_joint" type="revolute">
          <parent link="${prefix}base_link"/>
          <child link="${prefix}rod_right_link"/>
-            <origin xyz="0.0 0.0 0.027" rpy="0 0 0" />
+          <origin xyz="0.0 0.0 0.027" rpy="0 -0.261799 0" /> <!-- -0.261799 is 15 degrees -->
          <axis xyz="0 -1 0" />
  	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
 	<mimic joint="${prefix}gear_right_joint" multiplier="1" offset="0.0"/>
