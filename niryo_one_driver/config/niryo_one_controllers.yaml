@@ -56,6 +56,16 @@ gripper_right_controller:
   upper: 0.0301
   velocity: 0.041
 
+#gripper_right_controller:
+#  type: effort_controllers/JointPositionController
+#  joint: gripper_gear_right_joint
+#  pid: {p: 100.0, i: 0.01, d: 10.0}
+#gripper_left_controller:
+#  type: effort_controllers/JointPositionController
+#  joint: gripper_gear_left_joint
+#  pid: {p: 100.0, i: 0.01, d: 10.0}
+
+
 joint_read_state_controller:
    type: joint_state_controller/JointStateController 
    publish_rate: 100.0

@@ -17,8 +17,8 @@
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${jname}_joint">
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <!--<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>-->
+        <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+        <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
       </joint>
       <actuator name="${jname}_motor">
         <mechanicalReduction>1</mechanicalReduction>
@@ -72,7 +72,7 @@
          <child link="${prefix}gear_left_link"/>
             <origin xyz="0.016 0.0 0.005" rpy="0 0 0" />
          <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="0.0" velocity="0.5"/>
+ 	       <limit effort="1000.0" lower="-1.2" upper="0.0" velocity="0.5"/>
       </joint>
       
       <gazebo reference="${prefix}gear_left_joint">
@@ -135,7 +135,7 @@
          </inertial>
 
          <visual>
-            <origin xyz="-0.008 0.02 0.045" rpy=" 3.14 0  0 " />
+            <origin xyz="-0.008 0.02 0.045" rpy="3.14 0  0" />
             <geometry>
                <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_GearRight.STL" scale="0.001 0.001 0.001"/>
             </geometry>
@@ -158,10 +158,17 @@
       <joint name="${prefix}left_finger_base_joint" type="revolute">
          <parent link="${prefix}gear_left_link"/>
          <child link="${prefix}left_finger_base_link"/>
-            <origin xyz="0.01 0.0 0.035" rpy="0 0 0" />
+         <origin xyz="0.01 0.0 0.035" rpy="0 -0.0174533 0" />
          <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-	<mimic joint="${prefix}gear_left_joint" multiplier="-1" offset="0"/>
+				 <dynamics damping="0.7"/>
+         <gazebo>
+      		<stopErp>0.2</stopErp>
+      		<stopCfm>0.0</stopCfm>
+    		</gazebo>
+ 	      <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+          <gazebo/>
+        </limit>
+	      <mimic joint="${prefix}gear_left_joint" multiplier="-1" offset="0"/>
       </joint>
 
       <gazebo reference="${prefix}left_finger_base_joint">
@@ -169,7 +176,6 @@
       </gazebo>
 
       <!-- left finger base link -->
-
       <link name="${prefix}left_finger_base_link">
          <inertial>
             <mass value="0.02" />
@@ -196,19 +202,21 @@
          </collision>
       </link>
 
-
-
-
       <!-- GRIPPER CLAMP RIGHT -->
-   
-
       <joint name="${prefix}right_finger_base_joint" type="revolute">
-         <parent link="${prefix}gear_right_link"/>
-         <child link="${prefix}right_finger_base_link"/>
-         <origin xyz="-0.01 0.0 0.035" rpy=" 0 0 0" />
-         <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-	<mimic joint="${prefix}gear_right_joint" multiplier="-1" offset="0"/>
+        <parent link="${prefix}gear_right_link"/>
+        <child link="${prefix}right_finger_base_link"/>
+        <origin xyz="-0.01 0.0 0.035" rpy=" 0 0.0174533 0" />
+        <axis xyz="0 -1 0" />
+			  <dynamics damping="0.7"/>
+		 	  <gazebo>
+      	  <stopErp>0.2</stopErp>
+      	  <stopCfm>0.0</stopCfm>
+    	  </gazebo>
+ 	      <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+          <gazebo/>
+        </limit>
+	      <mimic joint="${prefix}gear_right_joint" multiplier="-1" offset="0"/>
       </joint>
 
 
@@ -217,7 +225,6 @@
       </gazebo>
       
       <!-- right finger base link -->
-
       <link name="${prefix}right_finger_base_link">
          <inertial>
             <mass value="0.02" />
@@ -247,7 +254,6 @@
 
 
       <!-- ROD LEFT -->
-
       <joint name="${prefix}rod_left_joint" type="revolute">
          <parent link="${prefix}base_link"/>
          <child link="${prefix}rod_left_link"/>
@@ -262,7 +268,6 @@
       </gazebo>
 
       <!-- rod left link -->
-
       <link name="${prefix}rod_left_link">
          <inertial>
             <mass value="0.25" />
@@ -291,7 +296,6 @@
       </link>
       
       <!-- ROD RIGHT -->
-
       <joint name="${prefix}rod_right_joint" type="revolute">
          <parent link="${prefix}base_link"/>
          <child link="${prefix}rod_right_link"/>
@@ -301,12 +305,12 @@
 	<mimic joint="${prefix}gear_right_joint" multiplier="1" offset="0.0"/>
       </joint>
       
+     
       <gazebo reference="${prefix}rod_right_joint">
         <implicitSpringDamper>1</implicitSpringDamper>
       </gazebo>
 
       <!-- rod right link -->
-
       <link name="${prefix}rod_right_link">
          <inertial>
             <mass value="0.25" />
@@ -333,66 +337,9 @@
             </geometry>
          </collision>
       </link>
-      
-      <!-- GEORGE_LEFT -->
-       
-      <!--joint name="${prefix}george_left_joint" type="revolute">
-         <parent link="${prefix}rod_left_link"/>
-         <child link="${prefix}left_finger_base_link"/>
-            <origin xyz="0.007 10 0.027" rpy="1.57 0 0" />
-        <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-      </joint-->
-       
-       <!--gazebo reference="${prefix}george_left_joint">
-        <implicitSpringDamper>1</implicitSpringDamper>
-      </gazebo-->
-      
-      <!-- george left link -->
 
-      <!--link name="${prefix}george_left_link">
-         <inertial>
-            <mass value="0.25" />
-            <origin xyz="0 0 0" />
-            <cylinder_inertia m="0.20" r="0.05" h="0.05" />
-         </inertial>
-
-         <visual>
-	<origin xyz="0.027 0.02 0.008" rpy="0.0 0.0 3.14" />
-            <geometry>
-               <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_George.STL" scale="0.001 0.001 0.001"/>
-            </geometry>
-
-            <material name="black">
-  		<color rgba="0.0 0.0 0.0 1.0"/>
-            </material>
-         </visual>
-
-         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-            <geometry>
-               <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_George.STL" scale="0.001 0.001 0.001"/>
-            </geometry>
-         </collision>
-      </link-->
-      
-      <!-- GEORGE RIGHT -->
-      
-      <!--joint name="${prefix}george_right_joint" type="revolute">
-         <parent link="${prefix}rod_right_link"/>
-         <child link="${prefix}right_finger_base_link"/>
-            <origin xyz="-0.007 0.0 0.027" rpy="0 0 0" />
-        <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-      </joint-->
-      
-       <!--gazebo reference="${prefix}george_right_joint">
-        <implicitSpringDamper>1</implicitSpringDamper>
-      </gazebo-->
-      
-      
+ 
     <!-- Mimic joints -->
-     
     <gazebo>
       <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_gripper2_1">
         <joint>${prefix}gear_left_joint</joint>

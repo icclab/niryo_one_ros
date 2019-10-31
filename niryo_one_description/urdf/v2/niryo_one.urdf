@@ -108,6 +108,8 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+  <!-- Dependency!! -->
+  <!-- https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins -->
   <!-- Links -->
   <link name="ground_link"/>
   <link name="base_link">
@@ -320,6 +322,7 @@
       <mass value="0.25"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.000166666666667" ixy="0" ixz="0" iyy="0.000166666666667" iyz="0" izz="0.00025"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy="0 3.14 3.14" xyz="-0.01 0.02 0.05"/>
@@ -340,7 +343,6 @@
   <gazebo reference="gripper_base_link">
     <material>Gazebo/Black</material>
     <!--turnGravityOff>false</turnGravityOff-->
-    <gravity>1</gravity>
   </gazebo>
   <!-- GEAR LEFT LINK -->
   <joint name="gripper_gear_left_joint" type="revolute">
@@ -352,7 +354,6 @@
   </joint>
   <gazebo reference="gripper_gear_left_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
-    <gravity>1</gravity>
   </gazebo>
   <!-- gripper gear left link -->
   <link name="gripper_gear_left_link">
@@ -360,6 +361,7 @@
       <mass value="0.25"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.000166666666667" ixy="0" ixz="0" iyy="0.000166666666667" iyz="0" izz="0.00025"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy="3.14 0.0 0.0" xyz="-0.025 0.02 0.045"/>
@@ -386,7 +388,6 @@
     <limit effort="1000.0" lower="0" upper="1.2" velocity="0.5"/>
   </joint>
   <gazebo reference="gripper_gear_right_joint">
-    <gravity>1</gravity>
     <implicitSpringDamper>1</implicitSpringDamper>
   </gazebo>
   <!-- gripper gear right link -->
@@ -395,6 +396,7 @@
       <mass value="0.25"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.000166666666667" ixy="0" ixz="0" iyy="0.000166666666667" iyz="0" izz="0.00025"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy=" 3.14 0  0 " xyz="-0.008 0.02 0.045"/>
@@ -416,14 +418,13 @@
   <joint name="gripper_left_finger_base_joint" type="revolute">
     <parent link="gripper_gear_left_link"/>
     <child link="gripper_left_finger_base_link"/>
-    <origin rpy="0 0 0" xyz="0.01 0.0 0.035"/>
+    <origin rpy="0 -0.0174533 0" xyz="0.01 0.0 0.035"/>
     <axis xyz="0 -1 0"/>
     <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
     <mimic joint="gripper_gear_left_joint" multiplier="-1" offset="0"/>
   </joint>
   <gazebo reference="gripper_left_finger_base_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
-    <gravity>1</gravity>
   </gazebo>
   <!-- left finger base link -->
   <link name="gripper_left_finger_base_link">
@@ -431,6 +432,7 @@
       <mass value="0.02"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="6.66666666667e-07" ixy="0" ixz="0" iyy="6.66666666667e-07" iyz="0" izz="1e-06"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy="0 3.14 0" xyz="-0.001 -0.007 0.011"/>
@@ -452,14 +454,13 @@
   <joint name="gripper_right_finger_base_joint" type="revolute">
     <parent link="gripper_gear_right_link"/>
     <child link="gripper_right_finger_base_link"/>
-    <origin rpy=" 0 0 0" xyz="-0.01 0.0 0.035"/>
+    <origin rpy=" 0 0.0174533 0" xyz="-0.01 0.0 0.035"/>
     <axis xyz="0 -1 0"/>
     <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
     <mimic joint="gripper_gear_right_joint" multiplier="-1" offset="0"/>
   </joint>
   <gazebo reference="gripper_right_finger_base_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
-    <gravity>1</gravity>
   </gazebo>
   <!-- right finger base link -->
   <link name="gripper_right_finger_base_link">
@@ -467,6 +468,7 @@
       <mass value="0.02"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="6.66666666667e-07" ixy="0" ixz="0" iyy="6.66666666667e-07" iyz="0" izz="1e-06"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy="0 3.14 3.14" xyz="0.002 0.02 0.011"/>
@@ -488,14 +490,14 @@
   <joint name="gripper_rod_left_joint" type="revolute">
     <parent link="gripper_base_link"/>
     <child link="gripper_rod_left_link"/>
-    <origin rpy="0 0 0" xyz="0.014 0.0 0.027"/>
+    <origin rpy="0 0.261799 0" xyz="0.014 0.0 0.027"/>
+    <!-- 0.261799 is 15 degrees -->
     <axis xyz="0 -1 0"/>
     <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
     <mimic joint="gripper_gear_left_joint" multiplier="1" offset="0"/>
   </joint>
   <gazebo reference="gripper_rod_left_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
-    <gravity>1</gravity>
   </gazebo>
   <!-- rod left link -->
   <link name="gripper_rod_left_link">
@@ -503,6 +505,7 @@
       <mass value="0.25"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.000166666666667" ixy="0" ixz="0" iyy="0.000166666666667" iyz="0" izz="0.00025"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy="0.0 0.0 3.14" xyz="0.027 0.02 0.008"/>
@@ -524,14 +527,14 @@
   <joint name="gripper_rod_right_joint" type="revolute">
     <parent link="gripper_base_link"/>
     <child link="gripper_rod_right_link"/>
-    <origin rpy="0 0 0" xyz="0.0 0.0 0.027"/>
+    <origin rpy="0 -0.261799 0" xyz="0.0 0.0 0.027"/>
+    <!-- -0.261799 is 15 degrees -->
     <axis xyz="0 -1 0"/>
     <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
     <mimic joint="gripper_gear_right_joint" multiplier="1" offset="0.0"/>
   </joint>
   <gazebo reference="gripper_rod_right_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
-    <gravity>1</gravity>
   </gazebo>
   <!-- rod right link -->
   <link name="gripper_rod_right_link">
@@ -539,6 +542,7 @@
       <mass value="0.25"/>
       <origin xyz="0 0 0"/>
       <inertia ixx="0.000166666666667" ixy="0" ixz="0" iyy="0.000166666666667" iyz="0" izz="0.00025"/>
+      <gravity>1</gravity>
     </inertial>
     <visual>
       <origin rpy="0.0 0.0 0.0" xyz="-0.027 -0.007 0.008"/>
@@ -556,75 +560,27 @@
       </geometry>
     </collision>
   </link>
-  <!-- GEORGE_LEFT -->
-  <!--joint name="${prefix}george_left_joint" type="revolute">
-         <parent link="${prefix}rod_left_link"/>
-         <child link="${prefix}left_finger_base_link"/>
-            <origin xyz="0.007 10 0.027" rpy="1.57 0 0" />
-        <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-      </joint-->
-  <!--gazebo reference="${prefix}george_left_joint">
-        <implicitSpringDamper>1</implicitSpringDamper>
-      </gazebo-->
-  <!-- george left link -->
-  <!--link name="${prefix}george_left_link">
-         <inertial>
-            <mass value="0.25" />
-            <origin xyz="0 0 0" />
-            <cylinder_inertia m="0.20" r="0.05" h="0.05" />
-         </inertial>
-
-         <visual>
-	<origin xyz="0.027 0.02 0.008" rpy="0.0 0.0 3.14" />
-            <geometry>
-               <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_George.STL" scale="0.001 0.001 0.001"/>
-            </geometry>
-
-            <material name="black">
-  		<color rgba="0.0 0.0 0.0 1.0"/>
-            </material>
-         </visual>
-
-         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-            <geometry>
-               <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_George.STL" scale="0.001 0.001 0.001"/>
-            </geometry>
-         </collision>
-      </link-->
-  <!-- GEORGE RIGHT -->
-  <!--joint name="${prefix}george_right_joint" type="revolute">
-         <parent link="${prefix}rod_right_link"/>
-         <child link="${prefix}right_finger_base_link"/>
-            <origin xyz="-0.007 0.0 0.027" rpy="0 0 0" />
-        <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-      </joint-->
-  <!--gazebo reference="${prefix}george_right_joint">
-        <implicitSpringDamper>1</implicitSpringDamper>
-      </gazebo-->
   <!-- Mimic joints -->
   <gazebo>
-    <plugin filename="libgazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_1">
+    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_1">
       <joint>gripper_gear_left_joint</joint>
       <mimicJoint>gripper_rod_left_joint</mimicJoint>
       <multiplier>1.0</multiplier>
       <offset>0.0</offset>
     </plugin>
-    <plugin filename="libgazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_2">
+    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_2">
       <joint>gripper_gear_right_joint</joint>
       <mimicJoint>gripper_rod_right_joint</mimicJoint>
       <multiplier>1.0</multiplier>
       <offset>0.0</offset>
     </plugin>
-    <plugin filename="libgazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_3">
+    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_3">
       <joint>gripper_gear_left_joint</joint>
       <mimicJoint>gripper_left_finger_base_joint</mimicJoint>
       <multiplier>-1.0</multiplier>
       <offset>0</offset>
     </plugin>
-    <plugin filename="libgazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_4">
+    <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_4">
       <joint>gripper_gear_right_joint</joint>
       <mimicJoint>gripper_right_finger_base_joint</mimicJoint>
       <multiplier>-1.0</multiplier>
@@ -653,8 +609,8 @@
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="gripper_gear_left_joint">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <!--<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>-->
+      <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
     </joint>
     <actuator name="gripper_gear_left_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -664,8 +620,8 @@
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="gripper_gear_right_joint">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <!--<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>-->
+      <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
     </joint>
     <actuator name="gripper_gear_right_motor">
       <mechanicalReduction>1</mechanicalReduction>
