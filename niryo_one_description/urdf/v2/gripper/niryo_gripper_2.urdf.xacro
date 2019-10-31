@@ -255,12 +255,19 @@
 
       <!-- ROD LEFT -->
       <joint name="${prefix}rod_left_joint" type="revolute">
-         <parent link="${prefix}base_link"/>
-         <child link="${prefix}rod_left_link"/>
-         <origin xyz="0.014 0.0 0.027" rpy="0 0.261799 0" />  <!-- 0.261799 is 15 degrees -->
+        <parent link="${prefix}base_link"/>
+        <child link="${prefix}rod_left_link"/>
+        <origin xyz="0.014 0.0 0.027" rpy="0 0.261799 0" />  <!-- 0.261799 is 15 degrees -->
         <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-	<mimic joint="${prefix}gear_left_joint" multiplier="1" offset="0"/>
+				<dynamics damping="0.7"/>
+        <gazebo>
+      	  <stopErp>0.2</stopErp>
+      	  <stopCfm>0.0</stopCfm>
+    	  </gazebo>
+ 	      <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+          <gazebo/>
+        </limit>
+	      <mimic joint="${prefix}gear_left_joint" multiplier="1" offset="0"/>
       </joint>
       
        <gazebo reference="${prefix}rod_left_joint">
@@ -297,12 +304,19 @@
       
       <!-- ROD RIGHT -->
       <joint name="${prefix}rod_right_joint" type="revolute">
-         <parent link="${prefix}base_link"/>
-         <child link="${prefix}rod_right_link"/>
-          <origin xyz="0.0 0.0 0.027" rpy="0 -0.261799 0" /> <!-- -0.261799 is 15 degrees -->
-         <axis xyz="0 -1 0" />
- 	 <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-	<mimic joint="${prefix}gear_right_joint" multiplier="1" offset="0.0"/>
+        <parent link="${prefix}base_link"/>
+        <child link="${prefix}rod_right_link"/>
+        <origin xyz="0.0 0.0 0.027" rpy="0 -0.261799 0" /> <!-- -0.261799 is 15 degrees -->
+        <axis xyz="0 -1 0" />
+        <dynamics damping="0.7"/>
+        <gazebo>
+      	  <stopErp>0.2</stopErp>
+      	  <stopCfm>0.0</stopCfm>
+    	  </gazebo>
+ 	      <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+          <gazebo/>
+        </limit>
+	      <mimic joint="${prefix}gear_right_joint" multiplier="1" offset="0.0"/>
       </joint>
       
      
@@ -344,14 +358,14 @@
       <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_gripper2_1">
         <joint>${prefix}gear_left_joint</joint>
         <mimicJoint>${prefix}rod_left_joint</mimicJoint>
-        <multiplier>1.0</multiplier>
-        <offset>0.0</offset>
+        <multiplier>1.186</multiplier>
+        <offset>0.261799</offset>
       </plugin>
       <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_gripper2_2">
         <joint>${prefix}gear_right_joint</joint>
         <mimicJoint>${prefix}rod_right_joint</mimicJoint>
-        <multiplier>1.0</multiplier>
-        <offset>0.0</offset>
+        <multiplier>1.186</multiplier>
+        <offset>-0.261799</offset>
       </plugin>
       <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_gripper2_3">
         <joint>${prefix}gear_left_joint</joint>
