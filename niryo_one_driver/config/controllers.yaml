@@ -1,0 +1,7 @@
+/gazebo_ros_control:   
+    pid_gains:
+    joint_1:
+    p: 100.0
+    i: 0.01 
+    d: 10.0
+

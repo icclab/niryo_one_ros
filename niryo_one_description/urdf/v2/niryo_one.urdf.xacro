@@ -54,8 +54,8 @@
 	<xacro:include filename="$(find niryo_one_description)/urdf/gazebo/niryo_one.transmission.xacro" />
 
 	<!-- Gripper -->	
-<!--	<xacro:include filename="$(find niryo_one_description)/urdf/v2/gripper/niryo_gripper_1.urdf.xacro" />  -->
-	<xacro:include filename="$(find niryo_one_description)/urdf/v2/gripper/niryo_gripper_2.urdf.xacro" /> 
+	<xacro:include filename="$(find niryo_one_description)/urdf/v2/gripper/niryo_gripper_1.urdf.xacro" />  
+	<!--xacro:include filename="$(find niryo_one_description)/urdf/v2/gripper/niryo_gripper_2.urdf.xacro" /--> 
 
 	<!-- Links -->
 
@@ -296,18 +296,21 @@
 	</joint>
     
 
-<!--	<xacro:niryo_gripper_1 prefix="gripper_" parent="tool_link" >
+	<xacro:niryo_gripper_1 prefix="gripper_" parent="tool_link" >
 	  <origin xyz="0.025 0 -0.013" rpy="${PI/2} ${PI} ${PI/2} " />
 	</xacro:niryo_gripper_1> 
--->
 
-	<xacro:niryo_gripper_2 prefix="gripper_" parent="tool_link" >
+
+	<!--xacro:niryo_gripper_2 prefix="gripper_" parent="tool_link" >
 	  <origin xyz="0.025 0 -0.013" rpy="${PI/2} ${PI} ${PI/2} " />
-	</xacro:niryo_gripper_2> 
+	</xacro:niryo_gripper_2--> 
 
     <!--plugin-->
 	<gazebo>
   		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      	<robotNamespace></robotNamespace>
+    		<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    		<legacyModeNS>true</legacyModeNS>
   		</plugin>
   	</gazebo>
 

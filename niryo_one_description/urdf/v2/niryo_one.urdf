@@ -110,6 +110,7 @@
   </transmission>
   <!-- Dependency!! -->
   <!-- https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins -->
+  <origin rpy="0 0 0" xyz="0 0 0"/>
   <!-- Links -->
   <link name="ground_link"/>
   <link name="base_link">
@@ -364,7 +365,7 @@
       <gravity>1</gravity>
     </inertial>
     <visual>
-      <origin rpy="3.14 0.0 0.0" xyz="-0.025 0.02 0.045"/>
+      <origin rpy="3.14 0 0" xyz="-0.025 0.02 0.045"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_GearLeft.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -373,7 +374,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <origin rpy="3.14 0 0" xyz="-0.025 0.02 0.045"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_GearLeft.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -399,7 +400,7 @@
       <gravity>1</gravity>
     </inertial>
     <visual>
-      <origin rpy=" 3.14 0  0 " xyz="-0.008 0.02 0.045"/>
+      <origin rpy="3.14 0 0" xyz="-0.008 0.02 0.045"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_GearRight.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -408,7 +409,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="3.14 0 0" xyz="-0.008 0.02 0.045"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_GearRight.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -420,8 +421,15 @@
     <child link="gripper_left_finger_base_link"/>
     <origin rpy="0 -0.0174533 0" xyz="0.01 0.0 0.035"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-    <mimic joint="gripper_gear_left_joint" multiplier="-1" offset="0"/>
+    <dynamics damping="0.7"/>
+    <gazebo>
+      <stopErp>0.2</stopErp>
+      <stopCfm>0.0</stopCfm>
+    </gazebo>
+    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+      <gazebo/>
+    </limit>
+    <!--mimic joint="${prefix}gear_left_joint" multiplier="-1" offset="0"/-->
   </joint>
   <gazebo reference="gripper_left_finger_base_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -444,7 +452,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0 3.14 0" xyz="-0.001 -0.007 0.011"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_Clamp.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -456,8 +464,15 @@
     <child link="gripper_right_finger_base_link"/>
     <origin rpy=" 0 0.0174533 0" xyz="-0.01 0.0 0.035"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-    <mimic joint="gripper_gear_right_joint" multiplier="-1" offset="0"/>
+    <dynamics damping="0.7"/>
+    <gazebo>
+      <stopErp>0.2</stopErp>
+      <stopCfm>0.0</stopCfm>
+    </gazebo>
+    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+      <gazebo/>
+    </limit>
+    <!--mimic joint="${prefix}gear_right_joint" multiplier="-1" offset="0"/-->
   </joint>
   <gazebo reference="gripper_right_finger_base_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -480,7 +495,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <origin rpy="0 3.14 3.14" xyz="0.002 0.02 0.011"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_Clamp.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -493,8 +508,15 @@
     <origin rpy="0 0.261799 0" xyz="0.014 0.0 0.027"/>
     <!-- 0.261799 is 15 degrees -->
     <axis xyz="0 -1 0"/>
-    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-    <mimic joint="gripper_gear_left_joint" multiplier="1" offset="0"/>
+    <dynamics damping="0.7"/>
+    <gazebo>
+      <stopErp>0.2</stopErp>
+      <stopCfm>0.0</stopCfm>
+    </gazebo>
+    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+      <gazebo/>
+    </limit>
+    <!--mimic joint="${prefix}gear_left_joint" multiplier="1" offset="0"/-->
   </joint>
   <gazebo reference="gripper_rod_left_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
@@ -508,7 +530,7 @@
       <gravity>1</gravity>
     </inertial>
     <visual>
-      <origin rpy="0.0 0.0 3.14" xyz="0.027 0.02 0.008"/>
+      <origin rpy="0 0 3.14" xyz="0.027 0.02 0.008"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_Rod.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -517,7 +539,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0 0 3.14" xyz="0.027 0.02 0.008"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_Rod.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -530,14 +552,21 @@
     <origin rpy="0 -0.261799 0" xyz="0.0 0.0 0.027"/>
     <!-- -0.261799 is 15 degrees -->
     <axis xyz="0 -1 0"/>
-    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5"/>
-    <mimic joint="gripper_gear_right_joint" multiplier="1" offset="0.0"/>
+    <dynamics damping="0.7"/>
+    <gazebo>
+      <stopErp>0.2</stopErp>
+      <stopCfm>0.0</stopCfm>
+    </gazebo>
+    <limit effort="1000.0" lower="-1.2" upper="1.2" velocity="0.5">
+      <gazebo/>
+    </limit>
+    <!--mimic joint="${prefix}gear_right_joint" multiplier="1" offset="0.0"/-->
   </joint>
   <gazebo reference="gripper_rod_right_joint">
     <implicitSpringDamper>1</implicitSpringDamper>
   </gazebo>
   <!-- rod right link -->
-  <link name="gripper_rod_right_link">
+  <link name="gripper_rod_right_link_george">
     <inertial>
       <mass value="0.25"/>
       <origin xyz="0 0 0"/>
@@ -545,7 +574,7 @@
       <gravity>1</gravity>
     </inertial>
     <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="-0.027 -0.007 0.008"/>
+      <origin rpy="0 0 0" xyz="-0.027 -0.007 0.008"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_Rod.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -554,7 +583,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0 0 0" xyz="2 -0.007 0.008"/>
       <geometry>
         <mesh filename="package://niryo_one_description/meshes/v2/stl/G2_Rod.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -565,14 +594,14 @@
     <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_1">
       <joint>gripper_gear_left_joint</joint>
       <mimicJoint>gripper_rod_left_joint</mimicJoint>
-      <multiplier>1.0</multiplier>
-      <offset>0.0</offset>
+      <multiplier>1.186</multiplier>
+      <offset>0.261799</offset>
     </plugin>
     <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_2">
       <joint>gripper_gear_right_joint</joint>
       <mimicJoint>gripper_rod_right_joint</mimicJoint>
-      <multiplier>1.0</multiplier>
-      <offset>0.0</offset>
+      <multiplier>1.186</multiplier>
+      <offset>-0.261799</offset>
     </plugin>
     <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="gripper_mimic_gripper2_3">
       <joint>gripper_gear_left_joint</joint>
@@ -588,23 +617,10 @@
     </plugin>
   </gazebo>
   <!-- hack from here: https://github.com/JenniferBuehler/gazebo-pkgs/wiki/The-Gazebo-grasp-fix-plugin -->
-  <gazebo>
-    <plugin filename="libgazebo_grasp_fix.so" name="gazebo_grasp_fix">
-      <arm>
-        <arm_name>niryo-arm</arm_name>
-        <palm_link>hand_link</palm_link>
-        <gripper_link>gripper_left_finger_base_link</gripper_link>
-        <gripper_link>gripper_right_finger_base_link</gripper_link>
-      </arm>
-      <forces_angle_tolerance>100</forces_angle_tolerance>
-      <update_rate>4</update_rate>
-      <grip_count_threshold>4</grip_count_threshold>
-      <max_grip_count>8</max_grip_count>
-      <release_tolerance>0.005</release_tolerance>
-      <disable_collisions_on_attach>false</disable_collisions_on_attach>
-      <contact_topic>__default_topic__</contact_topic>
-    </plugin>
-  </gazebo>
+  <!-- This plugin seems to be loaded -->
+  <!-- Also this plugin seems to require all the finger links to be attached 
+         to a link (palm link) which in our case does not happen. 
+There are the gear links between the hand link and the finger links -->
   <transmission name="gripper_gear_left_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="gripper_gear_left_joint">
@@ -627,10 +643,57 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+  <transmission name="gripper_rod_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="gripper_rod_left_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
+    </joint>
+    <actuator name="gripper_rod_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="gripper_rod_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="gripper_rod_right_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
+    </joint>
+    <actuator name="gripper_rod_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="gripper_left_finger_base_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="gripper_left_finger_base_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
+    </joint>
+    <actuator name="gripper_left_finger_base_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="gripper_right_finger_base_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="gripper_right_finger_base_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <!--hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface-->
+      <!--hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface-->
+    </joint>
+    <actuator name="gripper_right_finger_base_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <!--plugin-->
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-  		</plugin>
+      <robotNamespace/>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
   </gazebo>
 </robot>
 

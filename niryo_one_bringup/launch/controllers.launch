@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
     <!-- set to true if you want to launch ROS on your computer 
@@ -31,7 +32,8 @@
   
     <!-- spawn controllers (including gripper 2)-->
      <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
-        args="joint_state_controller niryo_one_follow_joint_trajectory_controller gripper_right_controller gripper_left_controller
+        
+        args="joint_state_controller niryo_one_follow_joint_trajectory_controller gripper_right_controller gripper_left_controller  
         --shutdown-timeout 1"/> 
 
 
