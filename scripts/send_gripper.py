@@ -11,11 +11,6 @@ import control_msgs.msg
 from std_msgs.msg import Float64
 
 
-from ur_msgs.srv import SetPayload, SetIO
-from ur_msgs.msg import *
-
-
-
 def gripper_client_2(value):
 
     p1 = rospy.Publisher('/gripper_left_controller/command', Float64, queue_size=1)
