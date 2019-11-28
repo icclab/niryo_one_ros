@@ -26,14 +26,20 @@ def test_camera():
 
 	transform_msg = geometry_msgs.msg.TransformStamped()
 	transform_msg.header.frame_id = "ground_link"
-	transform_msg.child_frame_id  = "camera_link"
+	transform_msg.child_frame_id  = "camera_optical_frame"
 	transform_msg.transform.translation.x = 0.611237 
 	transform_msg.transform.translation.y = 0.433886
 	transform_msg.transform.translation.z = 0.443974 
 
-        quat = tf.transformations.quaternion_from_euler(radians(0), radians(125), radians(-144))
-        quat_rot = tf.transformations.quaternion_multiply(quat,
-            tf.transformations.quaternion_from_euler(0,-pi/6+pi/18 ,-pi/2 -pi/9))
+        #quat = tf.transformations.quaternion_from_euler(radians(0), radians(125), radians(-144))
+        quat_rot = tf.transformations.quaternion_from_euler(-0.070526, 0.697037, -2.089600)
+        #quat_rot = tf.transformations.quaternion_multiply(quat,
+        #tf.transformations.quaternion_from_euler(0, -pi/6 +pi/18 ,-pi/2 -pi/9))
+        
+        #quat_rot = tf.transformations.quaternion_multiply(quat,
+        #tf.transformations.quaternion_from_euler(0.070526, 1.484623, -0.42367))
+
+        
         print quat_rot
 
 	transform_msg.transform.rotation.x = quat_rot[0]
