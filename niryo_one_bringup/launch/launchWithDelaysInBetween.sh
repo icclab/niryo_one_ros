@@ -5,13 +5,13 @@
 
 rosrun timed_roslaunch timed_roslaunch.sh 0 niryo_one_bringup base_world_model.launch &
 
-rosrun timed_roslaunch timed_roslaunch.sh 20 niryo_one_bringup controllers.launch &
+rosrun timed_roslaunch timed_roslaunch.sh 10 niryo_one_bringup controllers.launch &
 
-rosrun timed_roslaunch timed_roslaunch.sh 40 niryo_one_bringup robot_commander.launch &
+rosrun timed_roslaunch timed_roslaunch.sh 20 niryo_one_bringup robot_commander.launch &
 
-rosrun timed_roslaunch timed_roslaunch.sh 60 niryo_one_bringup launch_rviz.launch &
+# rosrun timed_roslaunch timed_roslaunch.sh 30 niryo_one_bringup launch_rviz.launch &
 
-sleep 80
+sleep 40
 
 read -n 1 -s -r -p "Press any key to continue"
 

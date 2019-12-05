@@ -2,7 +2,7 @@
 <launch>
 	<!--node pkg="tf" type="static_transform_publisher" name="ground_to_camera" args="0.611237 0.433886 0.443974 -2.089600 0.697037 -0.070526 ground_link camera_link 50"/-->
 
-	<node pkg="tf" type="static_transform_publisher" name="ground_to_camera" args="0.611237 0.433886 0.443974 0 0 0 ground_link camera_link 50"/>
+	<node pkg="tf" type="static_transform_publisher" name="ground_to_camera" args="0.601237 0.433886 0.443974 0 0 0 ground_link camera_link 50"/>
 
 	<!--node pkg="tf" type="static_transform_publisher" name="camera_to_opt_frame" args="0 0 0 0 1.57 0 camera_link camera_optical_frame 50" /-->
 	
