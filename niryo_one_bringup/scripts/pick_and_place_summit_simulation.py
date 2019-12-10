@@ -119,20 +119,15 @@ class GpdPickPlace(object):
                     continue
                 
                 
-<<<<<<< Updated upstream
-                tf_listener_.waitForTransform('/camera_optical_frame', '/base_link',
-=======
+
                 tf_listener_.waitForTransform('/camera_link', '/base_link',
->>>>>>> Stashed changes
+
                                               rospy.Time(), rospy.Duration(2.0))
 		g = Grasp()
                 g.id = "dupa"
                 gp = PoseStamped()
-<<<<<<< Updated upstream
-                gp.header.frame_id = "camera_optical_frame"
-=======
+
                 gp.header.frame_id = "camera_link"
->>>>>>> Stashed changes
 #                gp.header.frame_id = "base_link"
                 org_q = self.trans_matrix_to_quaternion(selected_grasps[i])
 
