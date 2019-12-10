@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-<<<<<<< Updated upstream
-	<node pkg="tf" type="static_transform_publisher" name="ground_to_camera" args="0.601237 0.433886 0.443974 0 0 0 ground_link camera_link 50"/>
-=======
->>>>>>> Stashed changes
-
   <!-- When I have only the camera link -->
 	<node pkg="tf" type="static_transform_publisher" name="ground_to_camera" args="0.601237 0.433886 0.443974 0.19136092  0.88362043 -0.40819979 -0.12636799 ground_link camera_link 50"/>
 
