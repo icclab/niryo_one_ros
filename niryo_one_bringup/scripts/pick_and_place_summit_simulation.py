@@ -120,14 +120,14 @@ class GpdPickPlace(object):
                 
                 
 
-                tf_listener_.waitForTransform('/camera_link', '/base_link',
+                tf_listener_.waitForTransform('/camera_optical_frame', '/base_link',
 
                                               rospy.Time(), rospy.Duration(2.0))
 		g = Grasp()
                 g.id = "dupa"
                 gp = PoseStamped()
 
-                gp.header.frame_id = "camera_link"
+                gp.header.frame_id = "camera_optical_frame"
 #                gp.header.frame_id = "base_link"
                 org_q = self.trans_matrix_to_quaternion(selected_grasps[i])
 
@@ -163,7 +163,7 @@ class GpdPickPlace(object):
 
                 # Add config for cartesian pick
                 gp_cartesian = PoseStamped()
-                gp_cartesian.header.frame_id = "camera_link"
+                gp_cartesian.header.frame_id = "camera_optical_frame"
                 gp_cartesian.pose.position.x = selected_grasps[i].surface.x + self.grasp_offset_cartesian * selected_grasps[i].approach.x
                 gp_cartesian.pose.position.y = selected_grasps[i].surface.y + self.grasp_offset_cartesian * selected_grasps[i].approach.y
                 gp_cartesian.pose.position.z = selected_grasps[i].surface.z + self.grasp_offset_cartesian * selected_grasps[i].approach.z
@@ -537,7 +537,7 @@ class GpdPickPlace(object):
 
     def add_object_mesh(self):
         obj_pose = PoseStamped()
-        obj_pose.header.frame_id = "camera_link"
+        obj_pose.header.frame_id = "camera_optical_frame"
         obj_pose.pose.position.x = 0
         obj_pose.pose.position.y = 0
         obj_pose.pose.position.z = 0
