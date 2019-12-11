@@ -50,6 +50,7 @@
   <gazebo reference="tool_link">
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
+
   <!--transmission-->
   <transmission name="base_shoulder_transmission">
     <type>transmission_interface/SimpleTransmission</type>

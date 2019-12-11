@@ -373,7 +373,6 @@
 
  
     <!-- Mimic joints -->
-    
     <gazebo>
       <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="${prefix}mimic_gripper2_1">
         <joint>${prefix}gear_left_joint</joint>
