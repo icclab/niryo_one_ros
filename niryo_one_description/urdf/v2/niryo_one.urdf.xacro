@@ -57,6 +57,7 @@
 	<xacro:include filename="$(find niryo_one_description)/urdf/v2/gripper/niryo_gripper_1.urdf.xacro" />  
 	<!--xacro:include filename="$(find niryo_one_description)/urdf/v2/gripper/niryo_gripper_2.urdf.xacro" /--> 
 
+  
 	<!-- Links -->
 
     <link name="ground_link"/>
