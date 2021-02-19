@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # send_custom_dxl_value.py
 # Copyright (C) 2018 Niryo
@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     try:
         rospy.wait_for_service(service_name, 1.0)
-    except rospy.ROSException, e:
+    except rospy.ROSException as e:
         rospy.logwarn(e)
         rospy.logwarn("Check that Niryo One ROS stack is running")
         exit()
@@ -50,7 +50,7 @@ if __name__ == '__main__':
         send_cmd = rospy.ServiceProxy(service_name, SendCustomDxlValue)
         response = send_cmd(args.type, args.id, args.value, args.address, args.size)
         rospy.loginfo(response.message)
-    except rospy.ServiceException, e:
+    except rospy.ServiceException as e:
         rospy.logwarn(e)
         exit()
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # robot_commander_exception.py
 # Copyright (C) 2017 Niryo

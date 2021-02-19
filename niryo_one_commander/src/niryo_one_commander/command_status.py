@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # command_status.py
 # Copyright (C) 2017 Niryo

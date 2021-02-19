@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # To use the API, copy these 4 lines on each Python file you create
 from niryo_one_python_api.niryo_one_api import *

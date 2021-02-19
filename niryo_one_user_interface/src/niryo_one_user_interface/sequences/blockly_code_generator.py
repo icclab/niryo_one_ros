@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # blockly_code_generator.py
 # Copyright (C) 2017 Niryo
@@ -116,7 +116,7 @@ class BlocklyCodeGenerator:
         # 7. Analyze response	
         try: 
             reply = ast.literal_eval(reply)
-        except Exception, e:
+        except Exception as e:
             return { 'status': 400, 'message': e }
 
         if reply['status'] != 200:

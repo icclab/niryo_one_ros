@@ -133,7 +133,7 @@ Accepted Modbus functions :
 You can test the Modbus/TCP server, for example from a remote computer on the same network.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from pymodbus.client.sync import ModbusTcpClient # you need to "pip install pymodbus" 
 
 # Positive number : 0 - 32767

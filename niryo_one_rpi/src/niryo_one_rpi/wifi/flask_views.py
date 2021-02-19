@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # flask_views.py
 # Copyright (C) 2017 Niryo

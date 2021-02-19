@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # led_manager.py
 # Copyright (C) 2017 Niryo
@@ -62,12 +62,12 @@ class LEDManager:
         
         try:
             rospy.wait_for_service('/niryo_one/set_dxl_leds', timeout=1)
-        except rospy.ROSException, e:
+        except rospy.ROSException as e:
             rospy.logwarn("Niryo ROS control LED service is not up!")
         try:
             set_dxl_leds = rospy.ServiceProxy('/niryo_one/set_dxl_leds', SetLeds)
             set_dxl_leds(leds)
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             rospy.logwarn("Could not call /niryo_one/set_dxl_leds service")
             
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # trajectory_command_type.py
 # Copyright (C) 2018 Niryo

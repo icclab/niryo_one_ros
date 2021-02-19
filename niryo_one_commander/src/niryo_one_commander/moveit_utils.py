@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # moveit_utils.py
 # Copyright (C) 2018 Niryo
@@ -30,22 +30,22 @@ from std_msgs.msg import Header
 def get_forward_kinematic(joints): 
 
     try:
-	  rospy.wait_for_service('compute_fk',2)
-    except (rospy.ServiceException, rospy.ROSException), e:
+          rospy.wait_for_service('compute_fk',2)
+    except (rospy.ServiceException, rospy.ROSException) as e:
           rospy.logerr("Service call failed:",e)
           return None 
     try:
-	  moveit_fk = rospy.ServiceProxy('compute_fk', GetPositionFK)
-	  fk_link= ['base_link','hand_link']
-    	  joint_names = ['joint_1','joint_2','joint_3','joint_4','joint_5','joint_6']
-    	  header = Header(0,rospy.Time.now(),"/ground_link")
-    	  rs = RobotState()
+          moveit_fk = rospy.ServiceProxy('compute_fk', GetPositionFK)
+          fk_link= ['base_link','hand_link']
+          joint_names = ['joint_1','joint_2','joint_3','joint_4','joint_5','joint_6']
+          header = Header(0,rospy.Time.now(),"/ground_link")
+          rs = RobotState()
           rs.joint_state.name = joint_names
           rs.joint_state.position = joints
           response = moveit_fk(header, fk_link, rs)
-    except rospy.ServiceException,e:
+    except rospy.ServiceException as e:
           rospy.logerr("Service call failed:",e)
-	  return(None)
+          return(None)
 
     quaternion=[response.pose_stamped[1].pose.orientation.x, response.pose_stamped[1].pose.orientation.y, 
 	response.pose_stamped[1].pose.orientation.z, response.pose_stamped[1].pose.orientation.w]

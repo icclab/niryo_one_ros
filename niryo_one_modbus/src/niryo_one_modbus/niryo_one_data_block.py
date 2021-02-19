@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # niryo_one_data_block.py
 # Copyright (C) 2017 Niryo
@@ -39,7 +39,7 @@ class NiryoOneDataBlock(ModbusSparseDataBlock):
         # Connect to service
         try:
             rospy.wait_for_service(service_name, 0.1)
-        except rospy.ROSException, e:
+        except rospy.ROSException as e:
             return 
         
         # Call service
@@ -47,6 +47,6 @@ class NiryoOneDataBlock(ModbusSparseDataBlock):
             service = rospy.ServiceProxy(service_name, service_msg_type)
             response = service(*args)
             return response
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             return
 

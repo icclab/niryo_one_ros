@@ -14,7 +14,7 @@ chmod +x test_python_api.py
 3. Use this template to write your code
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from niryo_one_python_api.niryo_one_api import *
 import rospy

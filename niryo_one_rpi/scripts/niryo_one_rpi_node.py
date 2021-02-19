@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # niryo_one_rpi_node.py
 # Copyright (C) 2017 Niryo

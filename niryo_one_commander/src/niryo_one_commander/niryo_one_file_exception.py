@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #niryo_one_file_exception.py
 # Copyright (C) 2018 Niryo
 # All rights reserved.

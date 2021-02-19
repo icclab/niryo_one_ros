@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # rpi_ros_utils.py
 # Copyright (C) 2018 Niryo
@@ -47,7 +47,7 @@ def send_hotspot_command():
     try:
         set_hotspot = rospy.ServiceProxy('/niryo_one/wifi/set_hotspot', SetInt)
         set_hotspot()
-    except rospy.ServiceException, e:
+    except rospy.ServiceException as e:
         rospy.logwarn("Could not call set_hotspot service")
 
 def send_trigger_sequence_autorun():
@@ -65,12 +65,12 @@ def send_shutdown_command():
     rospy.loginfo("Activate learning mode")
     try:
         rospy.wait_for_service('/niryo_one/activate_learning_mode', 1)
-    except rospy.ROSException, e:
+    except rospy.ROSException as e:
         pass
     try:
         activate_learning_mode = rospy.ServiceProxy('/niryo_one/activate_learning_mode', SetInt)
         activate_learning_mode(1)
-    except rospy.ServiceException, e:
+    except rospy.ServiceException as e:
         pass
     rospy.loginfo("Command 'sudo shutdown now'")
     try: 
@@ -84,12 +84,12 @@ def send_reboot_command():
     rospy.loginfo("Activate learning mode")
     try:
         rospy.wait_for_service('/niryo_one/activate_learning_mode', 1)
-    except rospy.ROSException, e:
+    except rospy.ROSException as e:
         pass
     try:
         activate_learning_mode = rospy.ServiceProxy('/niryo_one/activate_learning_mode', SetInt)
         activate_learning_mode(1)
-    except rospy.ServiceException, e:
+    except rospy.ServiceException as e:
         pass
     rospy.loginfo("Command 'sudo reboot'")
     try: 
@@ -102,7 +102,7 @@ def send_led_state(state):
     try:
         set_led = rospy.ServiceProxy('/niryo_one/rpi/set_led_state', SetInt)
         set_led(state)
-    except rospy.ServiceException, e:
+    except rospy.ServiceException as e:
         rospy.logwarn("Could not call set_led_state service")
 
 def enable_bus_motors_in_config_file(enable_can_bus=True, enable_dxl_bus=True):
