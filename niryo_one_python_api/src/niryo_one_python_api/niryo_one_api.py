@@ -421,5 +421,4 @@ class NiryoOne:
             self.break_point_publisher.publish(msg)
 	    # This delay makes sure the program has time
 	    # to stop, before executing next command
-	    rospy.sleep(0.5)
-
+            rospy.sleep(0.5)
